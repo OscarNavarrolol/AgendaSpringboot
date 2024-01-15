@@ -30,12 +30,21 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Contact updateContact(Contact contact) {
+    public Contact updateContact( Long id ,Contact contact) {
+        Contact contactexist = contactRepository.findById(id).orElse(null);
+
+        if (contactexist != null){
+            contactexist.setName(contact.getName());
+            contactexist.setEmail(contact.getEmail());
+            contactexist.setTelephone(contact.getTelephone());
+            contactexist.setFirstDate(contact.getFirstDate());
+            return contactRepository.save(contactexist);
+        }
         return null;
     }
 
     @Override
     public void deleteContact(Long id) {
-
+        contactRepository.deleteById(id);
     }
 }

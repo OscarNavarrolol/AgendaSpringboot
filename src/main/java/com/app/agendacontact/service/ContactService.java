@@ -11,7 +11,7 @@ public interface ContactService {
 
     public Contact getContactById(Long id);
 
-    public Contact updateContact(Contact contact);
+    public Contact updateContact(Long id,Contact contact);
 
     public void deleteContact(Long id);
 
